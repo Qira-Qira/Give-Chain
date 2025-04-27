@@ -1,0 +1,26 @@
+{
+  "canisters": {
+    "givechain_backend": {
+      "main": "src/givechain_backend/main.mo",
+      "type": "motoko"
+    },
+    "givechain_frontend": {
+      "dependencies": [
+        "givechain_backend"
+      ],
+      "source": [
+        "src/givechain_frontend/dist"
+      ],
+      "type": "assets",
+      "workspace": "givechain_frontend"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
+}
