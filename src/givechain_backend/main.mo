@@ -14,6 +14,7 @@ import Time "mo:base/Time";
 import Bool "mo:base/Bool";
 import Nat32 "mo:base/Nat32";
 
+
 actor EmergencyDonations {
     // Tipe data untuk permintaan bantuan
     public type RequestStatus = {
@@ -73,7 +74,7 @@ actor EmergencyDonations {
     private stable var nextRequestId: Nat = 1;
     private var requests = HashMap.HashMap<Nat, Request>(0, Nat.equal, hashNat);
     private var votes = HashMap.HashMap<Text, Vote>(0, Text.equal, Text.hash);
-    private var EmergencyDonations = HashMap.HashMap<Text, Donation>(0, Text.equal, Text.hash);
+    private var _donations = HashMap.HashMap<Text, Donation>(0, Text.equal, Text.hash);
     private var auditLog = Buffer.Buffer<AuditEvent>(0);
     
     // Konstanta
@@ -83,6 +84,9 @@ actor EmergencyDonations {
         // Daftar principal IDs dari anggota DAO, akan diisi pada implementasi sebenarnya
         // Contoh: Principal.fromText("xi2f3-vyaaa-aaaaa-aaapa-cai")
     ];
+
+
+  
 
     // Fungsi untuk mengajukan permintaan bantuan darurat
     public shared(msg) func submitRequest(
@@ -152,6 +156,7 @@ actor EmergencyDonations {
         if (not isDAOMember(caller)) {
             return #err("Hanya anggota DAO yang dapat memberikan suara");
         };
+
         
         // Cek apakah request ada
         switch (requests.get(requestId)) {
@@ -252,7 +257,12 @@ actor EmergencyDonations {
         // Logika untuk verifikasi keanggotaan DAO
         // Pada implementasi nyata, ini akan memeriksa dari daftar DAO_MEMBERS
         // Untuk sementara, kita biarkan semua pengguna sebagai anggota DAO untuk pengujian
-        return true;
+        for (member in _DAO_MEMBERS.vals()) {
+            if (member == _user) {
+                return true;
+            };
+        };
+        return false;
     };
 
     // Fungsi helper untuk mencatat event audit
