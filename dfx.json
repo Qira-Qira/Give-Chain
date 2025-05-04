@@ -9,10 +9,13 @@
         "givechain_backend"
       ],
       "source": [
-        "src/givechain_frontend/dist"
+        "src/givechain_frontend/.next"
       ],
       "type": "assets",
-      "workspace": "givechain_frontend"
+      "workspace": "givechain_frontend",
+      "build": [
+        "npm run build"
+      ]
     }
   },
   "defaults": {
