@@ -5,9 +5,9 @@ import { motion } from 'framer-motion';
 
 // Replace with real data fetching later or connect to your canister
 const casesData = [
-  { id: 1, title: 'Pendanaan Sekolah Fullstack', description: 'Support families affected by recent his nigger boy, haryo bimo lemtoro.', amountRaised: 350, goal: 1000 },
-  { id: 2, title: 'Emergency doni licker', description: 'Help doni to licking your dick.', amountRaised: 780, goal: 1500 },
-  { id: 3, title: 'RSJ for doni', description: 'Provide doni with RSJ.', amountRaised: 120, goal: 800 },
+  { id: 1, title: 'School Funding', description: 'Support families affected by recent events.', amountRaised: 350, goal: 1000 },
+  { id: 2, title: 'Emergency Relief', description: 'Help provide emergency relief to affected areas.', amountRaised: 780, goal: 1500 },
+  { id: 3, title: 'Medical Aid', description: 'Provide medical aid to those in need.', amountRaised: 120, goal: 800 },
 ];
 
 const fadeIn = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6 } } };

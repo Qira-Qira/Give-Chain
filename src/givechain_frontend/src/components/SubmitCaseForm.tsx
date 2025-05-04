@@ -16,8 +16,6 @@ interface SubmitCaseFormProps {
 }
 
 export default function SubmitCaseForm({ onSuccess, onClose }: SubmitCaseFormProps) {
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [error, setError] = useState('');
   const [formData, setFormData] = useState<FormData>({
     title: '',
     description: '',
@@ -26,6 +24,8 @@ export default function SubmitCaseForm({ onSuccess, onClose }: SubmitCaseFormPro
     amountRequested: '',
     recipientAddress: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState('');
 
   useEffect(() => {
     const userPrincipal = localStorage.getItem('userPrincipal');
@@ -41,9 +41,6 @@ export default function SubmitCaseForm({ onSuccess, onClose }: SubmitCaseFormPro
     if (!formData.proofUrl.trim()) return 'Proof URL is required';
     if (!formData.amountRequested || Number(formData.amountRequested) <= 0) {
       return 'Amount must be greater than 0';
-    }
-    if (!formData.recipientAddress) {
-      return 'Recipient address is missing - please login again';
     }
     return '';
   };
@@ -87,7 +84,7 @@ export default function SubmitCaseForm({ onSuccess, onClose }: SubmitCaseFormPro
         <input
           type="text"
           value={formData.title}
-          onChange={e => setFormData({...formData, title: e.target.value})}
+          onChange={e => setFormData({ ...formData, title: e.target.value })}
           className="w-full p-2 border rounded focus:ring-2 focus:ring-blue-500"
           required
         />
@@ -97,7 +94,7 @@ export default function SubmitCaseForm({ onSuccess, onClose }: SubmitCaseFormPro
         <label className="block text-sm font-medium mb-1">Description</label>
         <textarea
           value={formData.description}
-          onChange={e => setFormData({...formData, description: e.target.value})}
+          onChange={e => setFormData({ ...formData, description: e.target.value })}
           className="w-full p-2 border rounded focus:ring-2 focus:ring-blue-500"
           rows={4}
           required
@@ -108,7 +105,7 @@ export default function SubmitCaseForm({ onSuccess, onClose }: SubmitCaseFormPro
         <label className="block text-sm font-medium mb-1">Category</label>
         <select
           value={formData.category}
-          onChange={e => setFormData({...formData, category: e.target.value})}
+          onChange={e => setFormData({ ...formData, category: e.target.value })}
           className="w-full p-2 border rounded focus:ring-2 focus:ring-blue-500"
           required
         >
@@ -125,7 +122,7 @@ export default function SubmitCaseForm({ onSuccess, onClose }: SubmitCaseFormPro
         <input
           type="number"
           value={formData.amountRequested}
-          onChange={e => setFormData({...formData, amountRequested: e.target.value})}
+          onChange={e => setFormData({ ...formData, amountRequested: e.target.value })}
           className="w-full p-2 border rounded focus:ring-2 focus:ring-blue-500"
           min="0"
           step="0.1"
@@ -138,7 +135,7 @@ export default function SubmitCaseForm({ onSuccess, onClose }: SubmitCaseFormPro
         <input
           type="url"
           value={formData.proofUrl}
-          onChange={e => setFormData({...formData, proofUrl: e.target.value})}
+          onChange={e => setFormData({ ...formData, proofUrl: e.target.value })}
           className="w-full p-2 border rounded focus:ring-2 focus:ring-blue-500"
           placeholder="https://"
           required

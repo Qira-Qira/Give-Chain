@@ -3,19 +3,6 @@
     "givechain_backend": {
       "main": "src/givechain_backend/main.mo",
       "type": "motoko"
-    },
-    "givechain_frontend": {
-      "dependencies": [
-        "givechain_backend"
-      ],
-      "source": [
-        "src/givechain_frontend/.next"
-      ],
-      "type": "assets",
-      "workspace": "givechain_frontend",
-      "build": [
-        "npm run build"
-      ]
     }
   },
   "defaults": {
