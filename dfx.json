@@ -2,7 +2,22 @@
   "canisters": {
     "givechain_backend": {
       "main": "src/givechain_backend/main.mo",
+      "type": "motoko",
+      "dependencies": ["login"]
+    },
+    "login": {
+      "main": "src/givechain_backend/login.mo",
       "type": "motoko"
+    },
+    "givechain_frontend": {
+      "dependencies": [
+        "givechain_backend"
+      ],
+      "frontend": {
+        "entrypoint": "index.html"     
+      },
+      "source": ["src/givechain_frontend/out"], 
+      "type": "assets"
     }
   },
   "defaults": {

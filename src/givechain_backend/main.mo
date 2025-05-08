@@ -14,6 +14,7 @@ import Time "mo:base/Time";
 import Bool "mo:base/Bool";
 import Nat32 "mo:base/Nat32";
 
+import _Login "canister:login";
 
 actor EmergencyDonations {
     // Tipe data untuk permintaan bantuan
@@ -97,8 +98,8 @@ actor EmergencyDonations {
     private var votes = HashMap.HashMap<Text, Vote>(0, Text.equal, Text.hash);
     private var _donations = HashMap.HashMap<Text, Donation>(0, Text.equal, Text.hash);
     private var auditLog = Buffer.Buffer<AuditEvent>(0);
-    private var weeklyDonations = HashMap.HashMap<Text, WeeklyDonation>(0, Text.equal, Text.hash);
-    private var notifications = HashMap.HashMap<Principal, Buffer.Buffer<AuditEvent>>(0, Principal.equal, Principal.hash);
+    private var _weeklyDonations = HashMap.HashMap<Text, WeeklyDonation>(0, Text.equal, Text.hash);
+    private var _notifications = HashMap.HashMap<Principal, Buffer.Buffer<AuditEvent>>(0, Principal.equal, Principal.hash);
     
     // Konstanta
     private let VOTING_PERIOD_NS: Nat = 172800000000000; // 48 jam dalam nanosekon
@@ -475,4 +476,5 @@ actor EmergencyDonations {
     // TODO: Implementasi fungsi donasi dan penarikan dana
     // Catatan: Untuk metode ini kita memerlukan integrasi dengan token ICP untuk transaksi
     // yang akan diimplementasikan pada fase berikutnya.
+
 };
